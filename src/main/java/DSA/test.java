@@ -7,6 +7,12 @@ import javax.swing.*;
  *
  * @author Marielle
  */
-public class test {
+public class test extends JFrame {
+    
+    
+    test(){
+        setSize(1000,600);
+        
+    }
     
 }
