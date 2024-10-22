@@ -14,14 +14,13 @@ import javax.swing.*;
  *
  * @author Darrel
  */
-public class UserLogin extends JFrame implements ActionListener{
-
-    private JTextField txtFirstName, txtLastName, txtEmail;
+public class UserLogin extends JFrame implements ActionListener {
+    private JTextField txtFirstName, txtLastName, txtEmail,txtPhoneNumber;
     private JPasswordField txtPassword, txtConfirmPassword;
     private JButton btnCreateAccount;
-    private JLabel lblFirstName,lblLastName,lblEmail,lblPassword,lblConfirmPassword,lblLogo;
+    private JLabel lblFirstName,lblLastName,lblEmail,lblPassword,lblConfirmPassword,lblLogo,lblPhoneNumber;
     private ImageIcon imgLogo;
-    
+
     UserLogin() {
         
         setTitle("Create Account");
@@ -31,6 +30,7 @@ public class UserLogin extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         getContentPane().setBackground(new Color(253,252,233));
+        
         
         
         imgLogo = new ImageIcon("C:\\Users\\Darrel\\Documents\\NetBeansProjects\\LoginUser\\src\\Capture.JPG");
@@ -55,7 +55,7 @@ public class UserLogin extends JFrame implements ActionListener{
         add(lblEmail);
 
         txtEmail = new JTextField();
-        txtEmail.setBounds(225, 265, 540, 30);
+        txtEmail.setBounds(225, 265, 250, 30);
         txtEmail.setBackground(new Color(180, 204, 224));
         add(txtEmail);
         
@@ -78,6 +78,16 @@ public class UserLogin extends JFrame implements ActionListener{
         txtLastName.setBounds(515, 165, 250, 30);
         txtLastName.setBackground(new Color(180, 204, 224));
         add(txtLastName);
+        
+        lblPhoneNumber = new JLabel("Phone Number:");
+        lblPhoneNumber.setBounds(515, 225, 200, 30);
+        lblPhoneNumber.setFont(new Font("Garet",Font.BOLD,17));
+        add(lblPhoneNumber);
+        
+        txtPhoneNumber = new JTextField();
+        txtPhoneNumber.setBounds(515, 265, 250, 30);
+        txtPhoneNumber.setBackground(new Color(180, 204, 224));
+        add(txtPhoneNumber);
 
         lblConfirmPassword = new JLabel("Confirm Password:");
         lblConfirmPassword.setBounds(515, 325, 200, 30);
@@ -88,14 +98,13 @@ public class UserLogin extends JFrame implements ActionListener{
         txtConfirmPassword.setBounds(515, 365, 250, 30);
         txtConfirmPassword.setBackground(new Color(180, 204, 224));
         add(txtConfirmPassword);
-
+        
         btnCreateAccount = new JButton("Create Account");
-        btnCreateAccount.setBounds(225, 450, 230, 40);
+        btnCreateAccount.setBounds(225, 440, 230, 45);
         btnCreateAccount.setFont(new Font("Garet",Font.BOLD,17));
         btnCreateAccount.setBackground(new Color(37, 113, 128));
         btnCreateAccount.setForeground(new Color(253, 252, 233));
         add(btnCreateAccount);
-
         
         btnCreateAccount.addActionListener(this);
         
@@ -109,20 +118,22 @@ public class UserLogin extends JFrame implements ActionListener{
             String lastName = txtLastName.getText().trim();
             String email = txtEmail.getText().trim();
             String password = new String(txtPassword.getPassword());
+            String phoneNumber = new String(txtPhoneNumber.getText().trim());
             String confirmPassword = new String(txtConfirmPassword.getPassword());
 
-            if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "All fields are required to be filled!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phoneNumber.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "All fields are required!", "ERROR", JOptionPane.ERROR_MESSAGE);
             } else if (!password.equals(confirmPassword)) {
-                JOptionPane.showMessageDialog(null, "Passwords do not match!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Passwords do not match!", "ERROR", JOptionPane.ERROR_MESSAGE);
             } else {
                 
+               
                 dispose();
-                
+                new BookingForm(firstName, lastName, email,phoneNumber);
+                 
             }
         }
     }
 
 
 }
-
