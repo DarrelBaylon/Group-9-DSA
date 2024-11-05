@@ -9,9 +9,8 @@ package com.mycompany.welcomepage;
  * @author Jessica
  */
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
+
+import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.*;
