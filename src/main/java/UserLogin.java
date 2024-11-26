@@ -15,10 +15,10 @@ import javax.swing.*;
  * @author Darrel
  */
 public class UserLogin extends JFrame implements ActionListener {
-    private JTextField txtFirstName, txtLastName, txtEmail,txtPhoneNumber;
+    private JTextField txtFirstName, txtLastName, txtUserID,txtPhoneNumber;
     private JPasswordField txtPassword, txtConfirmPassword;
     private JButton btnCreateAccount;
-    private JLabel lblFirstName,lblLastName,lblEmail,lblPassword,lblConfirmPassword,lblLogo,lblPhoneNumber;
+    private JLabel lblFirstName,lblLastName,lblUserID,lblPassword,lblConfirmPassword,lblLogo,lblPhoneNumber;
     private ImageIcon imgLogo;
 
     UserLogin() {
@@ -49,15 +49,15 @@ public class UserLogin extends JFrame implements ActionListener {
         txtFirstName.setBackground(new Color(180, 204, 224));
         add(txtFirstName);
         
-        lblEmail = new JLabel("Email Address:");
-        lblEmail.setBounds(225, 225, 200, 30);
-        lblEmail.setFont(new Font("Garet",Font.BOLD,17));
-        add(lblEmail);
+        lblUserID = new JLabel("UserID:");
+        lblUserID.setBounds(225, 225, 200, 30);
+        lblUserID.setFont(new Font("Garet",Font.BOLD,17));
+        add(lblUserID);
 
-        txtEmail = new JTextField();
-        txtEmail.setBounds(225, 265, 250, 30);
-        txtEmail.setBackground(new Color(180, 204, 224));
-        add(txtEmail);
+        txtUserID = new JTextField();
+        txtUserID.setBounds(225, 265, 250, 30);
+        txtUserID.setBackground(new Color(180, 204, 224));
+        add(txtUserID);
         
         lblPassword = new JLabel("Password:");
         lblPassword.setBounds(225, 325, 200, 30);
@@ -116,7 +116,7 @@ public class UserLogin extends JFrame implements ActionListener {
         if (e.getSource() == btnCreateAccount) {
             String firstName = txtFirstName.getText().trim();
             String lastName = txtLastName.getText().trim();
-            String email = txtEmail.getText().trim();
+            String email = txtUserID.getText().trim();
             String password = new String(txtPassword.getPassword());
             String phoneNumber = new String(txtPhoneNumber.getText().trim());
             String confirmPassword = new String(txtConfirmPassword.getPassword());
@@ -129,7 +129,7 @@ public class UserLogin extends JFrame implements ActionListener {
                 
                
                 dispose();
-                new BookingForm(firstName, lastName, email,phoneNumber);
+                new Login();
                  
             }
         }

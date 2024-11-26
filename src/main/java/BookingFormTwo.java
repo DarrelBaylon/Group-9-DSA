@@ -1,27 +1,38 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
 /**
  *
  * @author Darrel
  */
-public class BookingForm extends JFrame implements ActionListener {
+public class BookingFormTwo extends JFrame implements ActionListener{
     private JTextField txtFirstName, txtLastName, txtUserID, txtPhoneNumber,txtCheckInDate, txtCheckOutDate, txtCheckInTime,txtCheckOutTime,txtFlightID,
-                       txtDestination,txtDeparture,txtTravelClass,txtArrival,txtPrice,txtHotelID,txtHotelName,txtLocation,txtRating,txtRoomPreference,txtHotelPrice;
-    private JButton btnNext;
+                       txtDestination,txtDeparture,txtTravelClass,txtArrival,txtPrice,txtHotelID,txtHotelName,txtLocation,txtRating,txtHotelPrice;
+    private JButton btnSubmit;
     private JLabel lblTitle,lblBookingID,lblFirstName,lblLastName,lblUserID,lblPhoneNumber,lblFlightID,lblDestination,lblDeparture,lblArrival,lblTravelClass,
                    lblPrice,lblHotelID,lblHotelName,lblLocation,lblRating,lblRoomPreference,lblHotelPrice,lblCheckInDate,lblCheckOutDate,lblCheckInTime,
                    lblCheckOutTime,lblTitlePersonalDetails,lblTitleFlightInformation,lblTitleHotelInformation,lblFlightTotalCost;
     private JPanel pnlPersonalDetails,pnlFlightInfo,pnlHotelInfo;
-    
+    private JComboBox cmbRoomPreference;
+    private String[] roomPreference = {"One","Two","Three"};
 
- BookingForm(String firstName,String lastName,String userID, String phoneNumber){
+ BookingFormTwo(String firstName,String lastName,String userID, String phoneNumber){
         
      
         setTitle("Booking Form");
@@ -256,11 +267,11 @@ public class BookingForm extends JFrame implements ActionListener {
         lblRoomPreference.setFont(new Font("Garet",Font.BOLD,12));
         pnlHotelInfo.add(lblRoomPreference);
 
-        txtRoomPreference = new JTextField();
-        txtRoomPreference.setBounds(145, 190, 275, 30);
-        txtRoomPreference.setEditable(false);
-        txtRoomPreference.setBackground(new Color(253,252,233));
-        pnlHotelInfo.add(txtRoomPreference);
+        cmbRoomPreference = new JComboBox<>(roomPreference);
+        cmbRoomPreference.setBounds(145, 190, 275, 30);
+        cmbRoomPreference.setEditable(true);
+        cmbRoomPreference.setBackground(new Color(253,252,233));
+        pnlHotelInfo.add(cmbRoomPreference);
 
         lblHotelPrice = new JLabel("Price:");
         lblHotelPrice.setBounds(20, 230, 100, 30);
@@ -280,7 +291,7 @@ public class BookingForm extends JFrame implements ActionListener {
 
         txtCheckInDate = new JTextField();
         txtCheckInDate.setBounds(40, 315, 150, 30);
-        txtCheckInDate.setEditable(false);
+        txtCheckInDate.setEditable(true);
         txtCheckInDate.setBackground(new Color(253,252,233));
         pnlHotelInfo.add(txtCheckInDate);
 
@@ -291,7 +302,7 @@ public class BookingForm extends JFrame implements ActionListener {
 
         txtCheckInTime = new JTextField();
         txtCheckInTime.setBounds(260, 315, 150, 30);
-        txtCheckInTime.setEditable(false);
+        txtCheckInTime.setEditable(true);
         txtCheckInTime.setBackground(new Color(253,252,233));
         pnlHotelInfo.add(txtCheckInTime);
         
@@ -302,7 +313,7 @@ public class BookingForm extends JFrame implements ActionListener {
 
         txtCheckOutDate = new JTextField();
         txtCheckOutDate.setBounds(40, 385, 150, 30);
-        txtCheckOutDate.setEditable(false);
+        txtCheckOutDate.setEditable(true);
         txtCheckOutDate.setBackground(new Color(253,252,233));
         pnlHotelInfo.add(txtCheckOutDate);
 
@@ -313,7 +324,7 @@ public class BookingForm extends JFrame implements ActionListener {
 
         txtCheckOutTime = new JTextField();
         txtCheckOutTime.setBounds(260, 385, 150, 30);
-        txtCheckOutTime.setEditable(false);
+        txtCheckOutTime.setEditable(true);
         txtCheckOutTime.setBackground(new Color(253,252,233));
         pnlHotelInfo.add(txtCheckOutTime);
         
@@ -323,27 +334,24 @@ public class BookingForm extends JFrame implements ActionListener {
         pnlHotelInfo.add(lblFlightTotalCost);
         
        
-        btnNext = new JButton("NEXT");
-        btnNext.setBounds(325, 440, 100, 30);
-        btnNext.setBackground(new Color(37, 113, 128));
-        btnNext.setForeground(new Color(253, 252, 233));
-        pnlHotelInfo.add(btnNext);
+        btnSubmit = new JButton("SUBMIT");
+        btnSubmit.setBounds(325, 440, 100, 30);
+        btnSubmit.setBackground(new Color(37, 113, 128));
+        btnSubmit.setForeground(new Color(253, 252, 233));
+        pnlHotelInfo.add(btnSubmit);
         
         setVisible(true);
         
-        btnNext.addActionListener(this);
+        btnSubmit.addActionListener(this);
         
     }
-  @Override
+ @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == btnNext) {
-            String firstName = "";
-            String lastName = "";
-            String userID = "";
-            String phoneNumber = "";
+        if (e.getSource() == btnSubmit) {
              JOptionPane.showMessageDialog(this, "successful!");
-             new BookingFormTwo(firstName,lastName,userID,phoneNumber);
              dispose();
         }
 }
 }
+
+    

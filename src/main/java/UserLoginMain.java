@@ -9,7 +9,7 @@
  */
 public class UserLoginMain {
     public static void main(String[]args){
-        UserLogin user = new UserLogin();
+        Login user = new Login();
             user.setVisible(true);
         
     }
